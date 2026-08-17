@@ -231,7 +231,7 @@ h2 {
             rgba(14,42,77,.30) 72%,
             var(--navy) 100%
         ),
-        url("../images/hero-dog.jpg");
+        url("images/hero-dog.jpg");
 
     background-size: cover;
     background-position: center;
