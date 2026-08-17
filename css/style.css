@@ -222,7 +222,33 @@ h2 {
     position: absolute;
     inset: 0;
 
-    background-image:
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+.hero-background img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter: saturate(.8);
+}
+
+.hero-background::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
         linear-gradient(
             to bottom,
             rgba(14,42,77,.92) 0%,
@@ -230,13 +256,7 @@ h2 {
             rgba(14,42,77,.08) 48%,
             rgba(14,42,77,.30) 72%,
             var(--navy) 100%
-        ),
-        url("../images/hero-dog.jpg");
-
-    background-size: cover;
-    background-position: center;
-
-    filter: saturate(.8);
+        );
 }
 
 .hero-background::after {
@@ -244,6 +264,8 @@ h2 {
 
     position: absolute;
     inset: 0;
+
+    z-index: 2;
 
     background:
         linear-gradient(
