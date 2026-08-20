@@ -198,6 +198,123 @@ h2 {
     cursor: pointer;
 }
 
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-trigger {
+    display: block;
+}
+.nav-dropdown-heading {
+    display: block;
+
+    padding: 14px 20px 5px;
+
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--blue);
+
+    opacity: .7;
+}
+
+/* Dropdown */
+
+.nav-dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 18px);
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-6px);
+
+    min-width: 150px;
+
+    padding: 10px 0;
+
+    background: var(--navy);
+
+    border: 1px solid rgba(148, 194, 228, .2);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+    z-index: 100;
+}
+
+
+/* Small connection */
+
+.nav-dropdown-menu::before {
+    content: "";
+
+    position: absolute;
+
+    top: -5px;
+    left: 50%;
+
+    width: 9px;
+    height: 9px;
+
+    background: var(--navy);
+
+    border-left: 1px solid rgba(148, 194, 228, .2);
+    border-top: 1px solid rgba(148, 194, 228, .2);
+
+    transform: translateX(-50%) rotate(45deg);
+}
+
+
+/* Links */
+
+.nav-dropdown-menu a {
+    display: block;
+
+    padding: 9px 20px;
+
+    color: var(--cream);
+
+    font-size: 11px;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.nav-dropdown-menu a:hover {
+    background: rgba(148, 194, 228, .08);
+
+    color: var(--blue);
+}
+.nav-dropdown-menu a::after {
+    display: none;
+}
+
+/* Show */
+
+.nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(-50%) translateY(0);
+}
 
 /* =========================================================
    LANDING PAGE
@@ -1372,6 +1489,551 @@ section {
     letter-spacing: .15em;
 
     opacity: .3;
+}
+
+
+/* =========================================================
+   SINGLE DOG PAGE
+========================================================= */
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.single-dog-hero {
+    position: relative;
+
+    min-height: 100svh;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: var(--navy);
+    color: var(--cream);
+
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.single-dog-hero-image {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+
+.single-dog-hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    filter: saturate(.78);
+}
+
+
+.single-dog-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(14,42,77,.80) 0%,
+            rgba(14,42,77,.18) 35%,
+            rgba(14,42,77,.10) 50%,
+            rgba(14,42,77,.88) 100%
+        );
+}
+
+
+.single-dog-hero-overlay::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(14,42,77,.72),
+            transparent 65%
+        );
+}
+
+
+.single-dog-stars {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    opacity: .32;
+
+    background-image:
+        radial-gradient(circle at 8% 20%, white 0 .7px, transparent 1.5px),
+        radial-gradient(circle at 18% 12%, white 0 1px, transparent 2px),
+        radial-gradient(circle at 27% 31%, white 0 .6px, transparent 1.5px),
+        radial-gradient(circle at 41% 16%, white 0 1.3px, transparent 2.5px),
+        radial-gradient(circle at 56% 25%, white 0 .7px, transparent 1.5px),
+        radial-gradient(circle at 67% 11%, white 0 .8px, transparent 1.7px),
+        radial-gradient(circle at 79% 29%, white 0 1px, transparent 2px),
+        radial-gradient(circle at 91% 15%, white 0 .7px, transparent 1.5px),
+        radial-gradient(circle at 87% 43%, white 0 1.3px, transparent 2.5px);
+}
+
+
+.single-dog-hero-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1300px;
+
+    margin: 0 auto;
+
+    padding: 0 7vw 90px;
+}
+
+
+.single-dog-hero-content h1 {
+    margin-top: 20px;
+
+    font-size: clamp(100px, 15vw, 210px);
+
+    line-height: .75;
+}
+
+
+.single-dog-registered {
+    margin-top: 25px;
+
+    font-family: var(--serif);
+
+    font-size: 25px;
+
+    opacity: .75;
+}
+
+
+.single-dog-meta {
+    display: flex;
+
+    gap: 28px;
+
+    margin-top: 30px;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+    letter-spacing: .2em;
+
+    opacity: .7;
+}
+
+
+.single-dog-constellation {
+    position: absolute;
+
+    right: 8vw;
+    bottom: 100px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    font-size: 8px;
+
+    letter-spacing: .3em;
+
+    color: var(--blue);
+
+    opacity: .8;
+}
+
+
+.constellation-symbol {
+    font-size: 35px;
+
+    color: var(--blue);
+}
+
+
+/* =========================================================
+   FACTS
+========================================================= */
+
+.single-dog-facts-section {
+    background: var(--cream);
+}
+
+
+.single-dog-section-heading {
+    max-width: 1250px;
+
+    margin: 0 auto;
+}
+
+
+.single-dog-section-heading h2 {
+    margin-top: 20px;
+
+    font-size: clamp(60px, 7vw, 100px);
+}
+
+
+.single-dog-facts {
+    max-width: 1250px;
+
+    margin: 70px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--line-dark);
+}
+
+
+.single-dog-fact {
+    min-height: 125px;
+
+    padding: 25px 25px 25px 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--line-dark);
+}
+
+
+.single-dog-fact:not(:nth-child(4n + 1)) {
+    padding-left: 25px;
+
+    border-left: 1px solid var(--line-dark);
+}
+
+
+.single-dog-fact span {
+    font-size: 8px;
+
+    text-transform: uppercase;
+    letter-spacing: .2em;
+
+    opacity: .45;
+}
+
+
+.single-dog-fact strong {
+    font-family: var(--serif);
+
+    font-size: 25px;
+
+    font-weight: 500;
+
+    line-height: 1.1;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.single-dog-about {
+    background: var(--pale-blue);
+}
+
+
+.single-dog-about-grid {
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 120px;
+}
+
+
+.single-dog-about-title h2 {
+    margin-top: 20px;
+
+    font-size: clamp(65px, 7vw, 105px);
+}
+
+
+.single-dog-about-text {
+    max-width: 520px;
+
+    padding-top: 45px;
+}
+
+
+.single-dog-about-text p {
+    margin-bottom: 25px;
+
+    font-size: 13px;
+
+    opacity: .65;
+}
+
+
+.single-dog-about-text .single-dog-lead {
+    font-family: var(--serif);
+
+    font-size: 30px;
+
+    line-height: 1.25;
+
+    opacity: 1;
+}
+
+
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+.single-dog-achievements {
+    background: var(--cream);
+}
+
+.achievements-timeline {
+    margin-top: 50px;
+    border-top: 1px solid var(--line-dark);
+}
+
+
+.achievement-item {
+    display: grid;
+
+    grid-template-columns: 100px 1fr;
+
+    gap: 30px;
+
+    padding: 35px 0;
+
+    border-bottom: 1px solid var(--line-dark);
+}
+
+
+.achievement-year {
+    font-family: var(--serif);
+
+    font-size: 26px;
+}
+
+
+.achievement-type {
+    display: block;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+    letter-spacing: .25em;
+
+    color: var(--brown);
+
+    margin-bottom: 10px;
+}
+
+
+.achievement-content p {
+
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    opacity: .75;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.single-dog-gallery {
+    background: var(--pale-blue);
+}
+
+
+.gallery-coming-soon {
+    max-width: 900px;
+
+    min-height: 300px;
+
+    margin: 70px auto 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid rgba(14,42,77,.15);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(148,194,228,.25),
+            transparent 45%
+        );
+}
+
+
+.gallery-star {
+    font-size: 35px;
+
+    color: var(--blue);
+
+    margin-bottom: 20px;
+}
+
+
+.gallery-coming-soon h3 {
+    font-size: 35px;
+}
+
+
+.gallery-coming-soon p {
+    margin-top: 10px;
+
+    font-size: 11px;
+
+    opacity: .5;
+}
+
+
+/* =========================================================
+   SINGLE DOG — MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .single-dog-hero {
+        min-height: 850px;
+    }
+
+
+    .single-dog-hero-content {
+        padding: 0 7vw 65px;
+    }
+
+
+    .single-dog-hero-content h1 {
+        font-size: clamp(90px, 25vw, 150px);
+    }
+
+
+    .single-dog-registered {
+        font-size: 20px;
+    }
+
+
+    .single-dog-meta {
+        flex-wrap: wrap;
+
+        gap: 12px 20px;
+    }
+
+
+    .single-dog-constellation {
+        display: none;
+    }
+
+
+    .single-dog-facts {
+        grid-template-columns: repeat(2, 1fr);
+
+        margin-top: 50px;
+    }
+
+
+    .single-dog-fact {
+        padding: 20px 15px;
+    }
+
+
+    .single-dog-fact:not(:nth-child(4n + 1)) {
+        padding-left: 15px;
+    }
+
+
+    .single-dog-fact:nth-child(odd) {
+        border-left: 0;
+    }
+
+
+    .single-dog-fact:nth-child(even) {
+        border-left: 1px solid var(--line-dark);
+    }
+
+
+    .single-dog-about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .single-dog-about-text {
+        padding-top: 0;
+    }
+
+
+    .pedigree-map {
+        width: 1000px;
+
+        margin-left: -170px;
+    }
+
+
+    .single-dog-pedigree {
+        overflow-x: auto;
+    }
+
+
+    .single-dog-achievements-grid {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+
+    .achievement-item {
+        grid-template-columns: 70px 1fr;
+
+        gap: 20px;
+    }
+
+
+    .achievement-content h3 {
+        font-size: 25px;
+    }
+
+
+    .gallery-coming-soon {
+        min-height: 250px;
+    }
+
 }
 
 

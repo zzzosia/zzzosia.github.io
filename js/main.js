@@ -2,7 +2,27 @@
    CATCHING THE SKY JAVASCRIPT
 ========================================================= */
 
-const header = document.querySelector(".site-header");
+const navbarContainer = document.querySelector("#navbar");
+
+if (navbarContainer) {
+
+    fetch("./components/navbar.html")
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error(
+                    `Navbar could not be loaded: ${response.status}`
+                );
+            }
+
+            return response.text();
+        })
+        .then(data => {
+
+            navbarContainer.innerHTML = data;
+
+const header =
+    document.querySelector(".site-header");
 
 function updateHeader() {
 
@@ -20,9 +40,9 @@ window.addEventListener("scroll", updateHeader);
 updateHeader();
 
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 const mobileButton =
     document.querySelector(".mobile-menu-button");
@@ -30,10 +50,12 @@ const mobileButton =
 const navLinks =
     document.querySelector(".nav-links");
 
-
 if (mobileButton && navLinks) {
 
-    mobileButton.setAttribute("aria-expanded", "false");
+    mobileButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
 
     mobileButton.addEventListener("click", () => {
 
@@ -52,9 +74,6 @@ if (mobileButton && navLinks) {
 
     });
 
-}
-
-if (navLinks && mobileButton) {
 
     const links =
         navLinks.querySelectorAll("a");
@@ -78,5 +97,47 @@ if (navLinks && mobileButton) {
         });
 
     });
+
+}
+
+            const currentPage =
+                document.body.dataset.page;
+
+            const dogsPages = [
+                "dogs",
+                "hauru",
+                "jimmy",
+                "marley"
+            ];
+
+            const littersPages = [
+                "litters"
+            ];
+
+
+            /* =========================
+               ACTIVE NAV
+            ========================= */
+
+            if (dogsPages.includes(currentPage)) {
+
+                document
+                    .querySelector(".nav-dropdown-dogs")
+                    ?.classList.add("active");
+
+            }
+
+            if (littersPages.includes(currentPage)) {
+
+                document
+                    .querySelector(".nav-dropdown-litters")
+                    ?.classList.add("active");
+
+            }
+
+        })
+        .catch(error => {
+            console.error("Could not load navbar:", error);
+        });
 
 }
