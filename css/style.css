@@ -1080,6 +1080,438 @@ section {
     background: var(--pale-blue);
 }
 
+ /* =========================================================
+   HAURU — PEDIGREE
+========================================================= */
+
+.single-dog-pedigree {
+    padding: 120px 0 130px;
+
+    background: var(--navy);
+    color: var(--cream);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.single-dog-pedigree-heading {
+    padding: 0 7vw;
+
+    text-align: center;
+}
+
+.single-dog-pedigree-heading h2 {
+    margin-top: 18px;
+
+    font-family: var(--serif);
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 500;
+
+    line-height: .95;
+}
+
+
+/* =========================================================
+   SCROLL AREA
+========================================================= */
+
+.single-dog-pedigree-scroll {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    margin-top: 70px;
+
+    padding: 30px 7vw 40px;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--blue) transparent;
+}
+
+.single-dog-pedigree-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.single-dog-pedigree-scroll::-webkit-scrollbar-track {
+    background: rgba(148,194,228,.12);
+}
+
+.single-dog-pedigree-scroll::-webkit-scrollbar-thumb {
+    background: var(--blue);
+}
+
+
+/* =========================================================
+   TREE
+========================================================= */
+
+.single-dog-pedigree-tree {
+
+    /*
+       Całkowita szerokość drzewa.
+
+       Zostawiamy stałą szerokość, ponieważ dzięki temu
+       możemy dokładnie obliczyć pozycję każdego node'a.
+    */
+
+    position: relative;
+
+    width: 1200px;
+    height: 620px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   GENERATIONS
+========================================================= */
+
+.single-dog-pedigree-generation {
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   GENERATION 1
+   HAURU
+========================================================= */
+
+.single-dog-pedigree-generation.generation-current {
+
+    left: 0;
+
+    width: 200px;
+
+    height: 100%;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   GENERATION 2
+========================================================= */
+
+.single-dog-pedigree-generation:nth-child(2) {
+
+    left: 280px;
+
+    width: 210px;
+
+    height: 100%;
+
+    justify-content: flex-start;
+
+    padding: 0;
+}
+
+
+/* Sire — dokładnie pomiędzy G3 #1 i G3 #2 */
+
+.single-dog-pedigree-generation:nth-child(2)
+.single-dog-pedigree-node:nth-child(1) {
+
+    position: absolute;
+
+    top: 30%;
+
+    transform: translateY(-50%);
+}
+
+
+/* Dam — dokładnie pomiędzy G3 #3 i G3 #4 */
+
+.single-dog-pedigree-generation:nth-child(2)
+.single-dog-pedigree-node:nth-child(2) {
+
+    position: absolute;
+
+    top: 70%;
+
+    transform: translateY(-50%);
+}
+
+
+/* Hover nie powinien niszczyć wycentrowania */
+
+.single-dog-pedigree-generation:nth-child(2)
+.single-dog-pedigree-node:nth-child(1):hover,
+.single-dog-pedigree-generation:nth-child(2)
+.single-dog-pedigree-node:nth-child(2):hover {
+
+    transform: translateY(calc(-50% - 2px));
+}
+
+
+/* =========================================================
+   GENERATION 3
+========================================================= */
+
+.single-dog-pedigree-generation:nth-child(3) {
+
+    left: 580px;
+
+    width: 230px;
+
+    height: 100%;
+
+    justify-content: space-between;
+
+    padding: 65px 0;
+}
+
+
+/* =========================================================
+   GENERATION 4
+========================================================= */
+
+.single-dog-pedigree-generation:nth-child(4) {
+
+    left: 900px;
+
+    width: 270px;
+
+    height: 100%;
+
+    justify-content: space-between;
+
+    padding: 15px 0;
+}
+
+
+/* =========================================================
+   NODES
+========================================================= */
+
+.single-dog-pedigree-node {
+
+    position: relative;
+
+    flex: 0 0 auto;
+
+    width: 100%;
+
+    min-height: 65px;
+
+    padding: 12px 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    background: rgba(148,194,228,.08);
+
+    border: 1px solid rgba(148,194,228,.28);
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+}
+
+
+.single-dog-pedigree-node:hover {
+
+    background: rgba(148,194,228,.14);
+
+    border-color: rgba(148,194,228,.5);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CURRENT DOG
+========================================================= */
+
+.single-dog-pedigree-node.current {
+
+    min-height: 120px;
+
+    background: rgba(148,194,228,.13);
+
+    border-color: rgba(148,194,228,.55);
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.single-dog-pedigree-node span {
+
+    margin-bottom: 5px;
+
+    font-family: var(--sans);
+
+    font-size: 7px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .16em;
+
+    color: var(--blue);
+
+    opacity: .8;
+}
+
+
+.single-dog-pedigree-node h3 {
+
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    line-height: 1.05;
+
+    color: var(--cream);
+}
+
+
+.single-dog-pedigree-node small {
+
+    margin-top: 5px;
+
+    font-family: var(--sans);
+
+    font-size: 7px;
+
+    letter-spacing: .1em;
+
+    opacity: .4;
+}
+
+
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .single-dog-pedigree {
+
+        padding: 90px 0 100px;
+    }
+
+
+    .single-dog-pedigree-scroll {
+
+        margin-top: 55px;
+
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+
+    .single-dog-pedigree-tree {
+
+        width: 850px;
+
+        margin: 0;
+    }
+
+
+    /* G1 */
+
+    .single-dog-pedigree-generation.generation-current {
+
+        width: 145px;
+    }
+
+
+    /* G2 */
+
+    .single-dog-pedigree-generation:nth-child(2) {
+
+        left: 190px;
+
+        width: 165px;
+
+        padding: 125px 0;
+    }
+
+
+    /* G3 */
+
+    .single-dog-pedigree-generation:nth-child(3) {
+
+        left: 380px;
+
+        width: 185px;
+
+        padding: 55px 0;
+    }
+
+
+    /* G4 */
+
+    .single-dog-pedigree-generation:nth-child(4) {
+
+        left: 590px;
+
+        width: 200px;
+
+        padding: 10px 0;
+    }
+
+
+    .single-dog-pedigree-node {
+
+        min-height: 55px;
+
+        padding: 9px 10px;
+    }
+
+
+    .single-dog-pedigree-node.current {
+
+        min-height: 100px;
+    }
+
+
+    .single-dog-pedigree-node h3 {
+
+        font-size: 13px;
+    }
+
+
+    .single-dog-pedigree-node span {
+
+        font-size: 6px;
+    }
+
+
+    .single-dog-pedigree-node small {
+
+        font-size: 6px;
+    }
+}
+
 
 /* =========================================================
    LITTERS
@@ -1670,82 +2102,221 @@ section {
 
 
 /* =========================================================
-   FACTS
+   DOG SUMMARY
 ========================================================= */
 
-.single-dog-facts-section {
+.single-dog-summary {
+    padding: 120px 7vw 140px;
+
     background: var(--cream);
-}
+    color: var(--navy);
 
+    display: grid;
+    grid-template-columns: minmax(220px, .7fr) minmax(0, 1.5fr);
 
-.single-dog-section-heading {
-    max-width: 1250px;
+    gap: 100px;
 
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 
-.single-dog-section-heading h2 {
-    margin-top: 20px;
+/* =========================================================
+   INTRO
+========================================================= */
 
-    font-size: clamp(60px, 7vw, 100px);
+.single-dog-summary-intro {
+    position: sticky;
+    top: 140px;
+
+    align-self: start;
+}
+
+.single-dog-summary-intro h2 {
+    margin-top: 25px;
+
+    font-family: var(--serif);
+    font-size: clamp(25px, 5vw, 50px);
+
+    font-weight: 500;
+    line-height: .9;
 }
 
 
-.single-dog-facts {
-    max-width: 1250px;
+/* =========================================================
+   CONTENT
+========================================================= */
 
-    margin: 70px auto 0;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    border-top: 1px solid var(--line-dark);
-}
-
-
-.single-dog-fact {
-    min-height: 125px;
-
-    padding: 25px 25px 25px 0;
-
+.single-dog-summary-content {
     display: flex;
     flex-direction: column;
-
-    justify-content: space-between;
-
-    border-bottom: 1px solid var(--line-dark);
 }
 
 
-.single-dog-fact:not(:nth-child(4n + 1)) {
-    padding-left: 25px;
+/* =========================================================
+   BLOCK
+========================================================= */
 
-    border-left: 1px solid var(--line-dark);
+.summary-block {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+
+    gap: 40px;
+
+    padding: 35px 0;
+
+    border-top: 1px solid rgba(14, 42, 77, .16);
+}
+
+.summary-block:last-child {
+    border-bottom: 1px solid rgba(14, 42, 77, .16);
 }
 
 
-.single-dog-fact span {
+.summary-label {
+    padding-top: 3px;
+
+    font-family: var(--sans);
     font-size: 8px;
+    font-weight: 700;
 
     text-transform: uppercase;
     letter-spacing: .2em;
+
+    opacity: .5;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.summary-details {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.summary-details p {
+    margin: 0 0 12px;
+}
+
+.summary-details strong {
+    font-weight: 600;
+}
+
+.summary-small {
+    font-size: 10px;
+
+    letter-spacing: .08em;
+
+    opacity: .5;
+}
+
+
+/* =========================================================
+   INLINE FACTS
+========================================================= */
+
+.summary-inline {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(80px, 1fr));
+
+    gap: 25px;
+
+    margin-top: 30px;
+}
+
+.summary-inline span,
+.health-grid span {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.summary-inline small,
+.health-grid small {
+    margin-bottom: 5px;
+
+    font-family: var(--sans);
+    font-size: 7px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: .15em;
 
     opacity: .45;
 }
 
 
-.single-dog-fact strong {
-    font-family: var(--serif);
+/* =========================================================
+   HEALTH
+========================================================= */
 
-    font-size: 25px;
+.health-grid {
+    display: grid;
 
-    font-weight: 500;
+    grid-template-columns:
+        repeat(5, 1fr);
 
-    line-height: 1.1;
+    gap: 24px 30px;
 }
 
+.health-grid span {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SPORT
+========================================================= */
+
+.sport-details {
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.sport-item {
+    display: grid;
+
+    grid-template-columns: 20px 1fr;
+
+    gap: 12px;
+}
+
+.sport-mark {
+    color: var(--blue);
+
+    font-size: 13px;
+}
+
+.sport-item strong {
+    display: block;
+
+    margin-bottom: 4px;
+    margin-top: -6px;
+
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.sport-item p {
+    max-width: 600px;
+
+    margin: 0;
+
+    font-size: 11px;
+    line-height: 1.6;
+
+    opacity: .8;
+}
 
 /* =========================================================
    ABOUT
@@ -1998,18 +2569,9 @@ section {
         padding-top: 0;
     }
 
-
-    .pedigree-map {
-        width: 1000px;
-
-        margin-left: -170px;
-    }
-
-
-    .single-dog-pedigree {
-        overflow-x: auto;
-    }
-
+/* =========================================================
+   achievements
+========================================================= */
 
     .single-dog-achievements-grid {
         grid-template-columns: 1fr;
@@ -2206,4 +2768,108 @@ color: var(--blue);
         flex-direction: column;
         gap: 10px;
     }
+
+    .single-dog-summary {
+        display: block;
+
+        padding: 80px 7vw 100px;
+    }
+
+    .single-dog-summary-intro {
+        position: static;
+
+        margin-bottom: 55px;
+    }
+
+    .single-dog-summary-intro h2 {
+        font-size: 48px;
+    }
+
+    .summary-block {
+        display: block;
+
+        padding: 30px 0;
+    }
+
+    .summary-label {
+        display: block;
+
+        margin-bottom: 20px;
+    }
+
+    .summary-inline {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 22px 20px;
+
+        margin-top: 25px;
+    }
+
+    .health-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 20px;
+    }
+
+    .sport-item {
+        grid-template-columns: 18px 1fr;
+
+        gap: 10px;
+    }
+
+    .sport-item strong {
+        font-size: 20px;
+    }
+
+    .single-dog-pedigree {
+        padding: 90px 0 100px;
+    }
+
+    .single-dog-pedigree-scroll {
+        margin-top: 55px;
+
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+    .single-dog-pedigree-tree {
+        min-width: 850px;
+
+        grid-template-columns:
+            145px
+            165px
+            185px
+            200px;
+
+        gap: 25px;
+    }
+
+    .single-dog-pedigree-generation {
+        min-height: 400px;
+
+        gap: 10px;
+    }
+
+    .single-dog-pedigree-node {
+        min-height: 55px;
+
+        padding: 9px 10px;
+    }
+
+    .single-dog-pedigree-node.current {
+        min-height: 100px;
+    }
+
+    .single-dog-pedigree-node h3 {
+        font-size: 13px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .summary-inline {
+        grid-template-columns: 1fr 1fr;
+    }
+
 }
