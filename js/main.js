@@ -6,7 +6,12 @@ const navbarContainer = document.querySelector("#navbar");
 
 if (navbarContainer) {
 
-    fetch("./components/navbar.html")
+    const navbarPath =
+    window.location.pathname.includes("/our-dogs/")
+        ? "../components/navbar.html"
+        : "./components/navbar.html";
+
+fetch(navbarPath)
         .then(response => {
 
             if (!response.ok) {
